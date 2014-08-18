@@ -105,7 +105,7 @@ module.exports = function(grunt) {
     sass: {
       options: {
         loadPath: '<%= BOWER_DIR %>'
-      }
+      },
       dist: {
         options: {
           style:        'compressed',
