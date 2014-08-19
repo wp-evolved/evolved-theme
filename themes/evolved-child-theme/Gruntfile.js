@@ -103,10 +103,13 @@ module.exports = function(grunt) {
 
     // Compiles the sass from the source dir
     sass: {
+      options: {
+        loadPath: '<%= BOWER_DIR %>'
+      },
       dist: {
         options: {
-          style: 'compressed',
-          force: true
+          style:        'compressed',
+          lineNumbers:  false
         },
         src:  '<%= SRC_DIR %>/scss/style.scss',
         dest: '<%= DIST_DIR %>/style.min.css'
@@ -127,8 +130,8 @@ module.exports = function(grunt) {
         options: {},
         files: [{
           expand: true,
-          cwd: '<%= IMG_DIR %>/',
-          src: '<%= IMG_FILES %>',
+          cwd:  '<%= IMG_DIR %>/',
+          src:  '<%= IMG_FILES %>',
           dest: '<%= IMG_DIR %>/'
         }]
       }
