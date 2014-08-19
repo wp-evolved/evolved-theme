@@ -136,9 +136,17 @@ module.exports = function(grunt) {
 
     // Scan CSS colors with Colorguard
     colorguard: {
-      options: {},
-      files: {
-        src: ['<%= DEV_DIR %>/style.css']
+      dist: {
+        options: {},
+        files: {
+          src: ['<%= DIST_DIR %>/style.min.css']
+        }
+      },
+      dev: {
+        options: {},
+        files: {
+          src: ['<%= DEV_DIR %>/style.css']
+        }
       }
     },
 
@@ -149,7 +157,10 @@ module.exports = function(grunt) {
           interrupt: true,
         },
         files: '<%= SRC_DIR %>/scss/**/*.scss',
-        tasks: 'sass:dev'
+        tasks: [
+          'sass:dev',
+          'colorguard:dev'
+        ]
       },
       js: {
         options: {
@@ -206,7 +217,7 @@ module.exports = function(grunt) {
     'uglify:all',
     'sass:dist',
     'imagemin:all',
-    'colorguard'
+    'colorguard:dist'
   ]);
 
   // Build for local dev
@@ -217,6 +228,6 @@ module.exports = function(grunt) {
     'concat:single',
     'sass:dev',
     'imagemin:all',
-    'colorguard'
+    'colorguard:dev'
   ]);
 };
