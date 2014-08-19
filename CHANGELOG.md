@@ -12,6 +12,11 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v1.0.1 - August 19, 2014
+
+* Added Sass import to Gruntfile for bower deps
+* Fixed colorguard task for build task
+
 ## v1.0.0 - August 13, 2014
 
 Initial Release of the Evolved Theme for WordPress

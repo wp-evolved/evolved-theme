@@ -1,4 +1,4 @@
-# Evolved for WordPress
+# Evolved for WordPress - v1.0.1
 
 > Evolved is a simple pair of parent and child themes and a set of build tasks to help you start and manage your WordPress theme development process.
 
