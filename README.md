@@ -59,8 +59,6 @@ sudo gem install sass
 
 Grunt is a great build tool and we've set it up so that you can concentrate on building your theme instead of optimizing how it's delivered. 
 
-*Before you start, be sure you've cd'd to the child theme directory*
-
 ### Main Tasks
 
 At it's core Grunt is extremely powerful, but most of the time we're only going to be utilizing it for a few standard tasks.
