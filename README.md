@@ -9,14 +9,16 @@
 * Utilizes [Bower][6] for easy dependency management.
 * Utilizes [Grunt][7] for asset building and LiveReload.
 
+
 ## Installation
 
 * To auto install Evolved use our [Yeoman generator][1].
-* To manually install Evolved either clone this repo or use the download button to save a zipped copy for yourself. Copy the two theme folders to your project's themes directory (you may want to copy the .gitignore and .editorconfig to your project's root as well).
+* To manually install Evolved either clone this repo or use the download button to save a zipped copy for yourself. Copy the contents of the root directory to your project's root directory and the two theme folders to your project's themes directory (you may want to copy the .gitignore and .editorconfig to your project's root as well). Open the Gruntfile.js and edit the `THEMES_DIR` constant to match the location of your project's themes directory.
 
 ### Node, NPM
 
 The theme depends on multiple Node tools for installation. To get started install Node and NPM from [nodejs.org][4].
+
 
 ## [Bower][6] and [Grunt][7]
 
@@ -30,13 +32,9 @@ npm install -g bower grunt-cli
 
 To avoid version issues Node and Bower install project dependencies locally. But don't worry, they're only used for building your assets, you don't need to track them in git or include them in your production environment.
 
-First, cd to the Evolved child theme *update with the correct path for your project*
+*Run the following from your project's root directory*
 
-```bash
-cd ~/Project-Name/web/wp-content/themes/evolved-child-theme
-```
-
-Next install Grunt and all of the Grunt plugins needed for concatonation, minification, image compression, js and sass compilation, and the necessary components for live reload (these are declared in package.json).
+Install Grunt and all of the Grunt plugins needed for concatonation, minification, image compression, js and sass compilation, and the necessary components for live reload (these are declared in package.json).
 
 ```bash
 npm install
@@ -61,9 +59,7 @@ sudo gem install sass
 
 Grunt is a great build tool and we've set it up so that you can concentrate on building your theme instead of optimizing how it's delivered. 
 
-*Before you start, be sure you've cd'd to the child theme directory*
-
-#### Main Tasks
+### Main Tasks
 
 At it's core Grunt is extremely powerful, but most of the time we're only going to be utilizing it for a few standard tasks.
 
@@ -89,7 +85,7 @@ Run the `build` command to concatonate and minify all the necessary files. These
 grunt build
 ```
 
-#### Available Grunt tasks
+### Available Grunt tasks
 
 Although `watch`, `build`, and `build:dev` should get you through 90% of your workflow there are other tasks (and subtasks) you can run in the current Grunt setup.
 
@@ -105,7 +101,7 @@ grunt imagemin    # Compresses images from /img/src directory to the /img/min di
 grunt colorguard  # Compares your css files for colors that are too-similar and conflict with each other
 ```
 
-#### Further info
+### Further info
 
 For further reading on Bower and Grunt, checkout these posts
 
