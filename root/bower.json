@@ -6,7 +6,7 @@
     "url": "http://github.com/wp-evolved"
   },
   "description": "Evolved is a simple pair of parent and child themes to help you start and manage your WordPress theme development process.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "dependencies": {
     "bourbon": "~4.0.1",
     "neat": "~1.6.0"
