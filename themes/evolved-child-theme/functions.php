@@ -46,7 +46,7 @@ function my_class_names( $classes ) {
  * Remove brakcets from ellipse
  */
 function excerpt_ellipse( $text ) {
-  return str_replace( '[...]', '&#8230;', $text );
+  return str_replace( array( '[...]', '[&hellip;]' ), '&#8230;', $text );
 }
 add_filter( 'get_the_excerpt', 'excerpt_ellipse' );
 
