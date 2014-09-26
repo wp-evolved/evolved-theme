@@ -12,6 +12,11 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v1.1.1 - September 26, 2014
+
+* Add catch for both '...' and HTML entity hellip
+* Fixed typo in clearfix.scss
+
 ## v1.1.0 - August 27, 2014
 
 * Moved dependencies and Gruntfile back to root of project to reduce commands from multiple locations and ease installation
