@@ -12,6 +12,11 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v1.1.2 - October 2, 2014
+
+* Fixed the `display_post_thumbnail_src` function
+* Fixed the `display_post_thumbnail` function
+
 ## v1.1.1 - September 26, 2014
 
 * Add catch for both '...' and HTML entity hellip
