@@ -57,7 +57,7 @@ function display_post_thumbnail( $id = 0, $size = 'thumbnail' ) {
       $img_src  = DEFAULT_PHOTO;
     } else {
       $class    = '';
-      $img_src  = display_post_thumbnail_src();
+      $img_src  = display_post_thumbnail_src( $post_id, $size );
     }
 
     echo '<a href="' . $link . '" title="Permanent Link to ' . esc_attr( get_the_title( $post_id ) ) . '" class="post-thumb' . $class . '" itemprop="image"><img src="' . $img_src . '" alt="' . esc_attr( get_the_title( $post_id ) ) . '" class="attachment-post-thumbnail wp-post-image"></a>';
