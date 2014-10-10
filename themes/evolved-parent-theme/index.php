@@ -4,24 +4,30 @@
 
   <section class="content">
 
-    <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+    <h1 class="page-title"><?php echo get_post_field( 'post_title', get_option( 'page_for_posts' ) ); ?></h1>
 
-    <?php edit_post_link('Edit', '', '' ); ?>
+    <ul class="hfeed preview-list preview-list--blog">
+    <?php
+      $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
+      $blog_args = array(
+        'post_type' => 'post',
+        'paged' => $paged
+      );
+      $query = new WP_Query( $blog_args );
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-      <h1 class="entry-title"><?php the_title(); ?></h1>
-      <div class="post-meta">
-        <time class="updated published" datetime="<?php the_date( 'c' ); ?>"><?php the_time('F j, Y'); ?></time>
-        <span class="author vcard"><span class="fn"><?php the_author(); ?></span></span>
-      </div>
-      <div class="entry-content">
-        <?php the_content(); ?>
-      </div>
-    </article>
+      if( $query->have_posts() ) while ( $query->have_posts() ) : $query->the_post();
+    ?>
+
+      <?php include( PARENT_TMPL_DIR . '/modules/mod-post-preview.php' ); ?>
 
     <?php endwhile; ?>
+    </ul>
 
-  </section>
+    <?php if ( function_exists( 'pagination' ) ) { pagination(); } ?>
+
+    <?php wp_reset_postdata(); ?>
+
+    </section>
 
   <?php get_sidebar(); ?>
 
