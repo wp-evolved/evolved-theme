@@ -21,7 +21,7 @@
  * Better Image Replacement
  */
 @mixin hidden-text {
-  display: block;
+  display: inline-block;
   height: 0;
   overflow: hidden;
   text-indent: 110%;
