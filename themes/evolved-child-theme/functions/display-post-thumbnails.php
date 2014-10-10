@@ -49,18 +49,20 @@ function display_post_thumbnail( $id = 0, $size = 'thumbnail' ) {
   $post     = get_post( $id );
   $post_id  = isset( $post->ID ) ? $post->ID : 0;
 
-  if ( display_post_thumbnail_src( $post_id, $size ) ) {
+  $link     = get_permalink( $post_id );
+  $src      = display_post_thumbnail_src( $post_id, $size );
+
+  if ( $src ) {
 
     if ( $src == DEFAULT_PHOTO ) {
-      $class    = ' default-photo';
-      $link     = get_permalink( $post_id );
+      $class    = 'post-thumb default-photo';
       $img_src  = DEFAULT_PHOTO;
     } else {
-      $class    = '';
-      $img_src  = display_post_thumbnail_src( $post_id, $size );
+      $class    = 'post-thumb';
+      $img_src  = $src;
     }
 
-    echo '<a href="' . $link . '" title="Permanent Link to ' . esc_attr( get_the_title( $post_id ) ) . '" class="post-thumb' . $class . '" itemprop="image"><img src="' . $img_src . '" alt="' . esc_attr( get_the_title( $post_id ) ) . '" class="attachment-post-thumbnail wp-post-image"></a>';
+    echo '<a href="' . $link . '" title="Permanent Link to ' . esc_attr( get_the_title( $post_id ) ) . '" class="' . $class . '" itemprop="image"><img src="' . $img_src . '" alt="' . esc_attr( get_the_title( $post_id ) ) . '" class="attachment-post-thumbnail wp-post-image"></a>';
   }
 }
 ?>
