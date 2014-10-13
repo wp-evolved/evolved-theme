@@ -27,7 +27,7 @@
 
     <?php wp_reset_postdata(); ?>
 
-    </section>
+  </section>
 
   <?php get_sidebar(); ?>
 
