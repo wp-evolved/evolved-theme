@@ -1,10 +1,15 @@
-<?php get_header(); ?>
+<?php
+  get_header();
+  $blog_page_id     = get_post_field( 'ID', get_option( 'page_for_posts' ) );
+  $blog_page_title  = get_post_field( 'post_title', get_option( 'page_for_posts' ) );
+?>
 
 <main role="main" class="site-content">
 
   <section class="content">
 
-    <h1 class="page-title"><?php echo get_post_field( 'post_title', get_option( 'page_for_posts' ) ); ?></h1>
+    <?php edit_post_link( 'Edit', '<p>', '</p>', $blog_page_id ); ?>
+    <h1 class="page-title"><?php echo $blog_page_title ); ?></h1>
 
     <ul class="hfeed preview-list preview-list--blog">
     <?php
