@@ -23,7 +23,7 @@
     <?php endwhile; ?>
     </ul>
 
-    <?php if ( function_exists( 'pagination' ) ) { pagination(); } ?>
+    <?php if ( function_exists( 'pagination' ) ) { pagination( $query ); } ?>
 
     <?php wp_reset_postdata(); ?>
 
