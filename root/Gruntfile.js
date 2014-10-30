@@ -191,7 +191,7 @@ module.exports = function(grunt) {
           livereload: true
         },
         files: [
-          '<%%= CHILD_DIR %>/**'
+          '<%= CHILD_DIR %>/**'
         ]
       }
     }
