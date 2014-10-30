@@ -12,6 +12,15 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v1.1.4 - October 30, 2014
+* Fixed an incorrect EJS template in the Gruntfile
+
+## v1.1.3 - October 10, 2014
+* Fixed the `display_post_thumbnail` function
+* Corrected border property in \_block\_list.css
+* Update `hidden-text` mixin in \_mixins.css
+* Fixed the `pagination` function
+
 ## v1.1.2 - October 2, 2014
 
 * Fixed the `display_post_thumbnail_src` function

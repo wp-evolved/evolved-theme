@@ -16,16 +16,20 @@
    </ol>
  */
 
-function pagination( $pages = '', $range = 2 ) {
+function pagination( $query = '', $paged = '', $pages = '', $range = 2 ) {
   $showitems = ( $range * 2 ) + 1;
 
-  global $paged;
+  if ( $query == '' ) {
+    global $wp_query;
+    $query = $wp_query;
+  }
 
-  if ( empty( $paged ) ) { $paged = 1; }
+  if ( $paged == '' ) {
+    $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
+  }
 
   if ( $pages == '' ) {
-    global $wp_query;
-    $pages = $wp_query->max_num_pages;
+    $pages = $query->max_num_pages;
     if ( !$pages ) {
       $pages = 1;
     }
@@ -33,8 +37,8 @@ function pagination( $pages = '', $range = 2 ) {
 
   if ( $pages != 1 ) {
     echo '<ol class="pagination">';
-    if ( $paged > 1 ) echo '<li class="pagination__prev"><a href="' . get_pagenum_link( $paged - 1 ) . '" rel="prev">Previous</a></li>';
-    if ( $paged > 2 && $paged > ( $range + 1 ) && $showitems < $pages ) echo '<li><a href="' . get_pagenum_link(1) . '">1</a></li>' . "\n" . '<li class="pagination__more"><span>&#8230;</span></li>';
+    if ( $paged > 1 ) echo '<li class="pagination__prev"><a href="' . get_pagenum_link( $paged - 1 ) . '" rel="prev">Prev</a></li>';
+    if ( $paged > 2 && $paged > ( $range + 1 ) && $showitems < $pages ) echo '<li><a href="' . get_pagenum_link(1) . '">1</a></li><li class="pagination__more"><span>&#8230;</span></li>';
 
     for ( $i = 1; $i <= $pages; $i++ ) {
       if ( 1 != $pages && ( !( $i >= ( $paged + $range + 1 ) || $i <= ( $paged - $range - 1 ) ) || $pages <= $showitems ) ) {
@@ -42,7 +46,7 @@ function pagination( $pages = '', $range = 2 ) {
       }
     }
 
-    if ( $paged < ( $pages - 1 ) && ( $paged + $range - 1 ) < $pages && $showitems < $pages ) echo '<li class="pagination__more"><span>&#8230;</span></li>' . "\n" . '<li><a href="' . get_pagenum_link( $pages ) . '">' . $pages . '</a></li>';
+    if ( $paged < ( $pages - 1 ) && ( $paged + $range - 1 ) < $pages && $showitems < $pages ) echo '<li class="pagination__more"><span>&#8230;</span></li><li><a href="' . get_pagenum_link( $pages ) . '">' . $pages . '</a></li>';
     if ( $paged < $pages ) echo '<li class="pagination__next"><a href="' . get_pagenum_link( $paged + 1 ) . '" rel="next">Next</a></li>';
     echo '</ol>';
   }
