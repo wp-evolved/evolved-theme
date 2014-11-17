@@ -9,7 +9,7 @@
   <section class="content">
 
     <?php edit_post_link( 'Edit', '<p>', '</p>', $blog_page_id ); ?>
-    <h1 class="page-title"><?php echo $blog_page_title ); ?></h1>
+    <h1 class="page-title"><?php echo $blog_page_title; ?></h1>
 
     <ul class="hfeed preview-list preview-list--blog">
     <?php
