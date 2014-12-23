@@ -12,6 +12,10 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v1.1.5 - November 17, 2014
+* Removed home.php to now default to index.php for the blog landing
+* Updated index.php to include list of latest posts and pagination
+
 ## v1.1.4 - October 30, 2014
 * Fixed an incorrect EJS template in the Gruntfile
 
