@@ -1,11 +1,11 @@
-# Evolved for WordPress - v1.1.6
+# Evolved for WordPress - v1.2.0
 
 > Evolved is a simple pair of parent and child themes and a set of build tasks to help you start and manage your WordPress theme development process.
 
 ## Features
 
 * Parent theme creates a unified base for all your projects without making too many design decisions.
-* Child theme takes control of your project's specific design requirements utilizing [Bourbon][8] for Sass utilities, [Neat][9] for grid alignments and borrows from [Inuit CSS][10] for a solid base.
+* Child theme takes control of your project's specific design requirements utilizing [Bourbon][9] for Sass utilities, [Neat][10] for grid alignments and borrows from [Inuit CSS][11] for a solid base.
 * Utilizes [Bower][6] for easy dependency management.
 * Utilizes [Grunt][7] for asset building and LiveReload.
 
@@ -13,19 +13,35 @@
 ## Installation
 
 * To auto install Evolved use our [Yeoman generator][1].
-* To manually install Evolved either clone this repo or use the download button to save a zipped copy for yourself. Copy the contents of the root directory to your project's root directory and the two theme folders to your project's themes directory (you may want to copy the .gitignore and .editorconfig to your project's root as well). Open the Gruntfile.js and edit the `THEMES_DIR` constant to match the location of your project's themes directory.
+* To manually install Evolved either clone this repo or use the download button to save a zipped copy for yourself. Copy the contents of the root directory to your project's root directory (excluding the grunt and gulp directories) and the two theme folders to your project's themes directory (you may want to copy the .gitignore and .editorconfig to your project's root as well). 
+* For Grunt, copy the contents of the grunt directory to your project's root directory. Open the Gruntfile.js and edit the `THEMES_DIR` constant to match the location of your project's themes directory.
+* For Gulp, copy the contents of the gulp directory to your project's root directory. Open the gulpfile.js and edit the `_theme_dir` variable to match the location of your project's themes directory. 
 
 ### Node, NPM
 
 The theme depends on multiple Node tools for installation. To get started install Node and NPM from [nodejs.org][4].
 
 
-## [Bower][6] and [Grunt][7]
+## [Bower][6] and 
 
-You'll need these Node tools installed *globally* to setup and build your project's files
+Install Bower *globally* to manage the project's external assets
 
 ```bash
-npm install -g bower grunt-cli
+npm install -g bower
+```
+
+## [Grunt][7] or [Gulp][8]
+
+Evolved was originally built to utilize Grunt as it's build tool. Since that time, Gulp has become better supported. We prefer Gulp for it's ability to process tasks without writing files to disk, but we will continue to support both as long as interest remains.
+
+```bash
+npm install -g grunt-cli
+```
+
+**or **
+
+```bash
+npm install -g gulp
 ```
 
 ### Install Dev Dependencies
@@ -34,7 +50,7 @@ To avoid version issues Node and Bower install project dependencies locally. But
 
 *Run the following from your project's root directory*
 
-Install Grunt and all of the Grunt plugins needed for concatonation, minification, image compression, js and sass compilation, and the necessary components for live reload (these are declared in package.json).
+Install your build tool and all of it's plugins needed for concatonation, minification, image compression, js and sass compilation, and the necessary components for live reload (these are declared in package.json).
 
 ```bash
 npm install
@@ -109,6 +125,65 @@ For further reading on Bower and Grunt, checkout these posts
 * Twitter Bower & Grunt - http://gpiot.com/blog/twitter-bower-grunt-get-started-with-assets-management/
 
 
+## Getting Started with Gulp
+
+Gulp is also a great build tool and we've set it up so that you can concentrate on building your theme instead of optimizing how it's delivered. 
+
+#### Main Tasks
+
+At it's core Gulp is extremely powerful, but most of the time we're only going to be utilizing it for a few standard tasks.
+
+```
+gulp build --dev
+```
+
+To start our new project we need to run the `build` task with the `--dev` flag. When running our project locally we want to build and concatonate our assets but not minify them. This task creates a `dev` directory and runs all the tasks required to build the assets.
+
+*Since these unminified files are only used locally, we also want to be sure we don't track these files in Git.*
+
+```
+gulp watch --dev
+```
+
+After our `dev` directory is created, we can run the `watch` task with the `--dev` flag to set Gulp to automatically build the `dev` assets and reload the browser when necessary with LiveReload.
+
+*After running `watch` refresh the browser once to connect the LiveReload script.*
+
+```
+gulp build
+```
+
+This task builds our production assets concatonating and minifying all the necessary files. These are the files used in staging and production environments.
+
+#### Available Gulp tasks
+
+Although `watch`, `build` should get you through 90% of your workflow there are other tasks (and subtasks) you can run in the current Gulp setup.
+
+```
+gulp clean      # Clean the dist/dev directories
+gulp lint       # Lints all js files (including the gulpfile) for errors
+gulp scripts    # Concatenates, minifies and renames the source JS files for dist/dev
+gulp styles     # Compiles and compresses the source Sass files for dist/dev
+gulp images     # Minimizes all the images
+```
+
+Each of these tasks (except for `images`) can be run with the `--dev` flag appended to them to create expanded files in the `dev` directory.
+
+Ex:
+
+```
+gulp styles --dev
+```
+
+Will build the styles in the `dev` directory for running the local site
+
+#### Further info
+
+For further reading on Gulp, checkout these posts
+
+* Getting Started with Gulp - http://markgoodyear.com/2014/01/getting-started-with-gulp/
+
+
 ## Working with the Parent theme
 
 The goal of the parent theme is to give a structured base for your projects but not to assume any design decisions. Making decisions in the parent theme can lead to bloat and unnecessary overrides, and we want your project to be lean and fast.
@@ -181,11 +256,12 @@ This project is stable but continuously under development. Be sure to read [the 
 
 [1]: https://github.com/wp-evolved/generator-evolved
 [2]: https://github.com/wp-evolved/evolved-theme/blob/master/CHANGELOG.md
-[3]: http://en.wikipedia.org/wiki/MIT_License
+[3]: https://github.com/wp-evolved/evolved-theme/blob/master/LICENSE
 [4]: http://nodejs.org/
 [5]: http://yeoman.io/
 [6]: http://bower.io/
 [7]: http://gruntjs.com/
-[8]: http://bourbon.io/
-[9]: http://neat.bourbon.io/
-[10]: https://github.com/csswizardry/inuit.css/
+[8]: http://gulpjs.com/
+[9]: http://bourbon.io/
+[10]: http://neat.bourbon.io/
+[11]: https://github.com/csswizardry/inuit.css/

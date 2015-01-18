@@ -12,6 +12,12 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v1.2.0 - January 18, 2014
+- Split up build tool resources in /root dir
+- Added gulpfile
+- Added package.json specific to Gulp dependencies
+- Updated Readme for Gulp info
+
 ## v1.1.6 - January 18, 2014
 - Updated the image itemprop to correct element
 
